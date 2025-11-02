@@ -1,0 +1,24 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  grid-row-start: 2;
+}
+
+@media (max-width: 600px) {
+  .main {
+    align-items: center;
+  }
+
+  .footer {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main {
+      padding: 0 6rem;
+  }
+}

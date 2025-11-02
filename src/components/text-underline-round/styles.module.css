@@ -1,0 +1,20 @@
+.dividerWrapper {
+  position: relative;
+  display: inline-block; /* para ajustar ao tamanho do texto */
+  margin: 16px auto 28px
+  
+}
+
+.divider {
+  font-size: 16px;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+}
+
+.underline {
+  position: absolute;
+  bottom: -2px; /* ajusta distância do underline */
+  left: 0;
+  width: 100%;
+}

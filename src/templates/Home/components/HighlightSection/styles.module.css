@@ -1,0 +1,10 @@
+.highlightSection {
+  margin-top: 72px;
+  padding: 16px 16px 0 16px;
+}
+
+@media (min-width: 1024px) {
+  .highlightSection {
+    padding: 16px 0;
+  }
+}

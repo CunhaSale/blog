@@ -1,0 +1,134 @@
+.postWrapper {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    height: 100%;
+    z-index: -1;
+}
+
+.imageWrapper {
+    width: calc(44% - 1.6rem);
+    height: 100%;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    padding: .4rem 0;
+}
+
+.imageWrapper img {
+    border-radius: 7%;
+    height: 100%;
+    /* min-height: 98px; */
+}
+
+.cardDescription {
+    position: relative;
+    padding: .4rem 1rem .4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: calc(56% + 1.6rem);
+    height: 100%;
+}
+
+.postHeading {
+    font-size: 2vh;
+    line-height: 2.4vh;
+    letter-spacing: .5px;
+    margin-bottom: .6rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    min-height: 50px;
+}
+
+.postDescription {
+    font-size: 1.8vh;
+    line-height: 2.2vh;
+    letter-spacing: .5px;
+    /* line-height: 22px; */
+    margin: 0;
+    /* color: #bdc1c6; */
+    color: var(--post-description);
+    margin-bottom: .6rem;
+    display: none;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.6vh;
+    line-height: 2vh;
+    color: var(--post-footer);
+    min-height: 20px;
+}
+
+.footerAd {
+    min-height: 20px;
+}
+
+.author {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 56%;
+}
+
+@media (min-width: 768px) {
+    .postHeading {
+        /* font-size: 18px; */
+    }
+
+    .postDescription {
+        /* font-size: 16px; */
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .footer {
+        /* font-size: 0.95rem; */
+    }    
+}
+
+@media (min-width: 926px) {
+    .postWrapper {
+        flex-direction: column;
+    }
+
+    .imageWrapper {
+        width: 100%;
+        height: fit-content;
+        padding: 0;
+    }
+
+    .cardDescription {
+        width: 100%;
+        padding: 1rem .8rem .8rem;
+    }
+
+    .footer {
+        margin-top: 30px
+    }
+}
+
+@media (min-width: 1200px) {
+    .postWrapper {
+       padding: 16px;
+    }
+
+    .cardDescription {
+        padding: 1.6rem 1rem 0;
+    }
+
+    .postHeading {
+        /* font-size: 20px; */
+    }
+
+    .postDescription {
+        /* font-size: 18px; */
+    }
+}

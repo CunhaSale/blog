@@ -1,0 +1,32 @@
+.divider {
+  text-transform: uppercase;
+  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  color: #ededed;
+  font-size: 1.8vh;
+  line-height: 2.2vh;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: #3B82F6;
+  text-underline-offset: 3px;
+}
+
+/* .divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.divider::before {
+  margin-right: 12px;
+}
+
+.divider::after {
+  margin-left: 12px;
+} */

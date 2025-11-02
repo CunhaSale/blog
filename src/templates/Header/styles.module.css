@@ -1,0 +1,12 @@
+.headerWrapper {
+  display: flex;
+  padding: 40px 1.2rem;
+  height: 72px;
+  background: #0a0a0a;
+  width: 100%;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
