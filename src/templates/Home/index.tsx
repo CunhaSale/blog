@@ -26,6 +26,37 @@ export default function HomeTemplate({ posts }: HomeTemplateProps) {
   const postsWithoutAds = posts.filter(post => !post.ad);
   const lastPost = postsWithoutAds[postsWithoutAds.length - 1];
 
+  const blogPosts = [
+    {
+      title: "5 ferramentas digitais que aumentam sua produtividade e liberam seu tempo",
+      excerpt: "Vivemos em um mundo em que tempo é um dos bens mais preciosos. Descubra as melhores ferramentas para otimizar seu dia a dia.",
+      author: "Gabriel Cunha",
+      date: "há 38 dias",
+      slug: "5-ferramentas-digitais-que-aumentam-sua-produtividade-e-liberam-seu-tempo",
+    },
+    {
+      title: "O poder do planejamento: como transformar metas em conquistas reais",
+      excerpt: "Quem nunca começou o ano com uma lista de objetivos e, alguns meses depois, percebeu que quase nada saiu do papel?",
+      author: "Gabriel Cunha",
+      date: "há 38 dias",
+      slug: "o-poder-do-planejamento-como-transformar-metas-em-conquistas-reais",
+    },
+    {
+      title: "Do zero ao controle: como organizar suas finanças pessoais em 5 passos práticos",
+      excerpt: "Ter o controle das finanças é essencial para conquistar estabilidade e realizar sonhos. Aprenda como organizar seu dinheiro.",
+      author: "Gabriel Cunha",
+      date: "há 40 dias",
+      slug: "do-zero-ao-controle-como-organizar-suas-financas-pessoais",
+    },
+    {
+      title: "Segredos para Estabilidade Financeira",
+      excerpt: "Aprender a organizar e planejar as finanças é essencial para conquistar a estabilidade financeira e realizar seus objetivos.",
+      author: "Gabriel Cunha",
+      date: "há 42 dias",
+      slug: "segredos-para-estabilidade-financeira",
+    },
+  ];
+
   return (
     <>
       <Head>
@@ -41,6 +72,35 @@ export default function HomeTemplate({ posts }: HomeTemplateProps) {
           <HeaderTemplate />
           <HighlightSection lastPost={lastPost} />
           <PostsList posts={posts} />
+           <h1 className="text-3xl font-bold underline" style={{ color: '#fff' }}>
+            Hello world!
+          </h1>
+          <section className="py-16 md:py-24">
+            <div className="container mx-auto px-4 md:px-8">
+              <div className="text-center space-y-4 mb-12 md:mb-16">
+                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-foreground">
+                  Explore Conteúdos Que Inspiram
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  Descubra, Aprenda e Conecte-se com Conteúdos Feitos pra Você
+                </p>
+              </div>
+              
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {blogPosts.map((post, index) => (
+                  <div 
+                    key={post.slug} 
+                    className="animate-fade-in"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                      {post.title}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
         </main>
         <Footer />
       </div>
