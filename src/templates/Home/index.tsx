@@ -1,11 +1,8 @@
 import Head from "next/head";
 import { Geist, Geist_Mono } from "next/font/google";
-import styles from "./styles.module.css";
 import { Post } from "../Post";
-import HeaderTemplate from "../Header";
-import Footer from "@/components/footer";
-import { HighlightSection } from "./components/HighlightSection";
-import { PostsList } from "./components/PostsList";
+import { BlogPostCard } from "@/components/BlogPostCard";
+import { Header } from "@/components/Header";
 // import TextUnderlineRound from "@/components/text-underline-round";
 
 const geistSans = Geist({
@@ -23,39 +20,8 @@ export type HomeTemplateProps = {
 }
 
 export default function HomeTemplate({ posts }: HomeTemplateProps) {
-  const postsWithoutAds = posts.filter(post => !post.ad);
-  const lastPost = postsWithoutAds[postsWithoutAds.length - 1];
-
-  const blogPosts = [
-    {
-      title: "5 ferramentas digitais que aumentam sua produtividade e liberam seu tempo",
-      excerpt: "Vivemos em um mundo em que tempo é um dos bens mais preciosos. Descubra as melhores ferramentas para otimizar seu dia a dia.",
-      author: "Gabriel Cunha",
-      date: "há 38 dias",
-      slug: "5-ferramentas-digitais-que-aumentam-sua-produtividade-e-liberam-seu-tempo",
-    },
-    {
-      title: "O poder do planejamento: como transformar metas em conquistas reais",
-      excerpt: "Quem nunca começou o ano com uma lista de objetivos e, alguns meses depois, percebeu que quase nada saiu do papel?",
-      author: "Gabriel Cunha",
-      date: "há 38 dias",
-      slug: "o-poder-do-planejamento-como-transformar-metas-em-conquistas-reais",
-    },
-    {
-      title: "Do zero ao controle: como organizar suas finanças pessoais em 5 passos práticos",
-      excerpt: "Ter o controle das finanças é essencial para conquistar estabilidade e realizar sonhos. Aprenda como organizar seu dinheiro.",
-      author: "Gabriel Cunha",
-      date: "há 40 dias",
-      slug: "do-zero-ao-controle-como-organizar-suas-financas-pessoais",
-    },
-    {
-      title: "Segredos para Estabilidade Financeira",
-      excerpt: "Aprender a organizar e planejar as finanças é essencial para conquistar a estabilidade financeira e realizar seus objetivos.",
-      author: "Gabriel Cunha",
-      date: "há 42 dias",
-      slug: "segredos-para-estabilidade-financeira",
-    },
-  ];
+  // const postsWithoutAds = posts.filter(post => !post.ad);
+  // const lastPost = postsWithoutAds[postsWithoutAds.length - 1];
 
   return (
     <>
@@ -65,16 +31,12 @@ export default function HomeTemplate({ posts }: HomeTemplateProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div
-        className={`${geistSans.variable} ${geistMono.variable}`}
-      >
-        <main className={styles.main}>
-          <HeaderTemplate />
-          <HighlightSection lastPost={lastPost} />
-          <PostsList posts={posts} />
-           <h1 className="text-3xl font-bold underline" style={{ color: '#fff' }}>
-            Hello world!
-          </h1>
+      <div className={`min-h-screen bg-background ${geistSans.variable} ${geistMono.variable}`}>
+        <Header />
+        <main>
+          {/* <HeaderTemplate /> */}
+          {/* <HighlightSection lastPost={lastPost} /> */}
+          {/* <PostsList posts={posts} /> */}
           <section className="py-16 md:py-24">
             <div className="container mx-auto px-4 md:px-8">
               <div className="text-center space-y-4 mb-12 md:mb-16">
@@ -87,22 +49,41 @@ export default function HomeTemplate({ posts }: HomeTemplateProps) {
               </div>
               
               <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {blogPosts.map((post, index) => (
+                {posts.map((post, index) => (
                   <div 
                     key={post.slug} 
                     className="animate-fade-in"
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
-                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                      {post.title}
-                    </p>
+                    <BlogPostCard {...post} />
                   </div>
                 ))}
               </div>
             </div>
           </section>
         </main>
-        <Footer />
+        <footer className="border-t bg-card py-12">
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-muted-foreground">
+                  © 2024 MindTech. Todos os direitos reservados.
+                </span>
+              </div>
+              <div className="flex gap-6">
+                <a href="/sobre-nos" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  Sobre Nós
+                </a>
+                <a href="/anuncios" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  Jobs
+                </a>
+                <a href="/contato" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  Contato
+                </a>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
     </>
   )

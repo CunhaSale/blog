@@ -1,0 +1,71 @@
+import { Code2, Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { useState } from "react";
+
+export const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  return (
+    <header className="sticky top-0 z-50 w-full border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-8">
+        <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <Code2 className="h-6 w-6 text-primary" />
+          <span className="text-xl font-bold text-foreground">MindTech</span>
+        </Link>
+        
+        <nav className="flex items-center gap-6 md:flex hidden">
+          <Link 
+            href="/sobre-nos" 
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Sobre Nós
+          </Link>
+          <Link 
+            href="/anuncios" 
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Jobs
+          </Link>
+          <Button variant="cta" size="sm" asChild>
+            <Link href="/contato">Começar agora</Link>
+          </Button>
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden p-2 text-foreground"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
+      </div>
+
+      {/* Mobile Navigation */}
+      {isMenuOpen && (
+        <nav className="md:hidden border-t bg-card px-4 py-4 animate-fade-in">
+          <div className="flex flex-col gap-4">
+            <Link 
+              href="/sobre-nos" 
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Sobre Nós
+            </Link>
+            <Link 
+              href="/anuncios" 
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Jobs
+            </Link>
+            <Button variant="cta" size="sm" asChild className="w-full">
+              <Link href="/contato" onClick={() => setIsMenuOpen(false)}>Começar agora</Link>
+            </Button>
+          </div>
+        </nav>
+      )}
+    </header>
+  );
+};
