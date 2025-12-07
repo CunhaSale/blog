@@ -50,7 +50,7 @@ const PostTemplate = ({ post }: PostTemplateProps) => {
               Voltar
             </Link>
             <span className="text-muted-foreground">/</span>
-            <Link href="#" className="text-primary hover:underline">
+            <Link href={`/categoria/${post.subCategories[0].category.slug}`} className="text-primary hover:underline">
               {post.subCategories[0].category.name}
             </Link>
             <span className="text-muted-foreground">/</span>

@@ -1,8 +1,10 @@
+import { Header } from '@/components/Header';
 import client from '@/graphql/client';
 import { GetPageBySlugQuery, GetPagesQuery } from '@/graphql/generated/graphql';
 import { GET_PAGE_BY_SLUG, GET_PAGES } from '@/graphql/queries';
 import PageTemplate, { PageTemplateProps } from '@/templates/Pages';
 import { GetStaticProps } from 'next';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 export default function Page({ title, body }: PageTemplateProps) {
@@ -31,12 +33,28 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         slug: `${params?.slug}`
     })
 
-    if (!page) return { notFound: true };
+    if (!page) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <main className="container mx-auto px-4 py-12">
+          <div className="text-center">
+            <h1 className="text-3xl font-bold text-foreground mb-4">
+              Página não encontrada
+            </h1>
+            <Link href="/" className="text-primary hover:underline">
+              Voltar para a página inicial
+            </Link>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
     return {
         revalidate: 60,
         props: {
-            heading: page.title,
+            title: page.title,
             body: page.body?.html,
         }
     };
