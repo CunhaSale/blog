@@ -1,9 +1,16 @@
-import { Code2, Menu, X } from "lucide-react";
+import { Code2, Menu, Moon, Sun, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useState } from "react";
+import { useTheme } from "next-themes";
 
 export const Header = () => {
+  const { theme, setTheme } = useTheme();
+ 
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   return (
@@ -33,6 +40,16 @@ export const Header = () => {
           >
             Nossos Serviços
           </Link>
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-lg text-foreground hover:text-primary hover:bg-muted transition-colors"
+            aria-label="Alternar tema">
+              {theme === "dark" ? (
+                <Moon className="w-5 h-5" />
+              ) : (
+                <Sun className="w-5 h-5" />
+              )}
+          </button>
           <Button variant="cta" size="sm" asChild>
             <Link href="/contato">Começar agora</Link>
           </Button>
