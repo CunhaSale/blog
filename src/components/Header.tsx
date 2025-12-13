@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useState } from "react";
 import { useTheme } from "next-themes";
+import Cookies from "js-cookie";
 
 export const Header = () => {
   const { theme, setTheme } = useTheme();
@@ -13,6 +14,16 @@ export const Header = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
+  function redirectToOtherApp() {
+    Cookies.set("app-theme", theme ?? "light", {
+      path: "/",
+      sameSite: "lax",
+      domain: ".brandup.dev"
+    })
+
+    window.location.href = "https://brandup-lp.vercel.app/"
+  }
+
   return (
     <header className="sticky top-0 z-50 backdrop-blur-lg bg-background/80 border-b border-border supports-[backdrop-filter]:bg-card/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-8">
@@ -35,7 +46,11 @@ export const Header = () => {
             Jobs
           </Link>
           <Link 
-            href="https://brandup-lp.vercel.app/" 
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              redirectToOtherApp();
+            }}
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Nossos Serviços
@@ -96,8 +111,12 @@ export const Header = () => {
               Jobs
             </Link>
             <Link 
-              href="https://brandup-lp.vercel.app/" 
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                redirectToOtherApp();
+              }}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               Nossos Serviços
             </Link>
