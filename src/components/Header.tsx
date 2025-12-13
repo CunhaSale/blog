@@ -1,28 +1,25 @@
 import { Code2, Menu, Moon, Sun, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
 export const Header = () => {
   const { theme, setTheme } = useTheme();
+  const { query } = useRouter();
  
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
-  function redirectToOtherApp() {
-    Cookies.set("app-theme", theme ?? "light", {
-      path: "/",
-      sameSite: "lax",
-      domain: ".brandup.dev"
-    })
 
-    window.location.href = "https://brandup-lp.vercel.app/"
-  }
+  useEffect(() => {
+    if (query.theme === "light" || query.theme === "dark") {
+      setTheme(query.theme)
+    }
+  }, [query.theme])
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-lg bg-background/80 border-b border-border supports-[backdrop-filter]:bg-card/60">
@@ -46,11 +43,7 @@ export const Header = () => {
             Jobs
           </Link>
           <Link 
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              redirectToOtherApp();
-            }}
+            href="https://brandup-lp.vercel.app/?theme=${theme}"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Nossos Serviços
@@ -111,11 +104,7 @@ export const Header = () => {
               Jobs
             </Link>
             <Link 
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                redirectToOtherApp();
-              }}
+              href="https://brandup-lp.vercel.app/?theme=${theme}"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               Nossos Serviços
