@@ -43,7 +43,7 @@ export const Header = () => {
             Jobs
           </Link>
           <Link 
-            href="https://brandup-lp.vercel.app/?theme=${theme}"
+            href={`https://brandup-lp.vercel.app/?theme=${theme}`}
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Nossos Serviços
@@ -104,7 +104,7 @@ export const Header = () => {
               Jobs
             </Link>
             <Link 
-              href="https://brandup-lp.vercel.app/?theme=${theme}"
+              href={`https://brandup-lp.vercel.app/?theme=${theme}`}
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               Nossos Serviços
