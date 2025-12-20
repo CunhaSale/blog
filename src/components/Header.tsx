@@ -37,12 +37,6 @@ export const Header = () => {
             Sobre Nós
           </Link>
           <Link 
-            href="/anuncios" 
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Jobs
-          </Link>
-          <Link 
             href={`https://brandup-lp.vercel.app/?theme=${theme}`}
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
@@ -58,9 +52,6 @@ export const Header = () => {
                 <Sun className="w-5 h-5" />
               )}
           </button>
-          <Button variant="cta" size="sm" asChild>
-            <Link href="/contato">Começar agora</Link>
-          </Button>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -97,21 +88,11 @@ export const Header = () => {
               Sobre Nós
             </Link>
             <Link 
-              href="/anuncios" 
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Jobs
-            </Link>
-            <Link 
               href={`https://brandup-lp.vercel.app/?theme=${theme}`}
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               Nossos Serviços
             </Link>
-            <Button variant="cta" size="sm" asChild className="w-full">
-              <Link href="/contato" onClick={() => setIsMenuOpen(false)}>Começar agora</Link>
-            </Button>
           </div>
         </nav>
       )}
