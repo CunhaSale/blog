@@ -40,7 +40,7 @@ export const Header = () => {
             href={`https://brandup-lp.vercel.app/?theme=${theme}`}
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Nossos Serviços
+            Consultoria
           </Link>
           <button
             onClick={toggleTheme}
@@ -91,7 +91,7 @@ export const Header = () => {
               href={`https://brandup-lp.vercel.app/?theme=${theme}`}
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
-              Nossos Serviços
+              Consultoria
             </Link>
           </div>
         </nav>

@@ -20,7 +20,7 @@ export type HomeTemplateProps = {
 }
 
 export default function HomeTemplate({ posts }: HomeTemplateProps) {
-  // const postsWithoutAds = posts.filter(post => !post.ad);
+  const postsWithoutAds = posts.filter(post => !post.ad);
   // const lastPost = postsWithoutAds[postsWithoutAds.length - 1];
 
   return (
@@ -49,7 +49,7 @@ export default function HomeTemplate({ posts }: HomeTemplateProps) {
               </div>
               
               <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {posts.map((post, index) => (
+                {postsWithoutAds.map((post, index) => (
                   <div 
                     key={post.slug} 
                     className="animate-fade-in"
