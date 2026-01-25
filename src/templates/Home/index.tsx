@@ -49,13 +49,13 @@ export default function HomeTemplate({ posts }: HomeTemplateProps) {
               </div>
               
               <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {postsWithoutAds.map((post, index) => (
+                {postsWithoutAds.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).map((post, index) => (
                   <div 
-                    key={post.slug} 
-                    className="animate-fade-in"
-                    style={{ animationDelay: `${index * 100}ms` }}
+                  key={post.slug} 
+                  className="animate-fade-in"
+                  style={{ animationDelay: `${index * 100}ms` }}
                   >
-                    <BlogPostCard {...post} />
+                  <BlogPostCard {...post} />
                   </div>
                 ))}
               </div>
