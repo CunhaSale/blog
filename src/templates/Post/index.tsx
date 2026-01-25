@@ -117,7 +117,7 @@ const PostTemplate = ({ post }: PostTemplateProps) => {
               .bodyhtml .highlight {
                 border-left: 3px solid #29D;
                 padding-left: 7px;
-                margin: 16px;
+                margin: 32px 16px;
               }
               `}</style>
             </section>
