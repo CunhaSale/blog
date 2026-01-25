@@ -110,9 +110,16 @@ const PostTemplate = ({ post }: PostTemplateProps) => {
 
             <section className="mb-8">
               <div
-                className="text-muted-foreground leading-relaxed mb-4"
-                dangerouslySetInnerHTML={{ __html: post.body.html }}
+              className="text-muted-foreground leading-relaxed mb-4 bodyhtml"
+              dangerouslySetInnerHTML={{ __html: post.body.html }}
               />
+              <style jsx global>{`
+              .bodyhtml .highlight {
+                border-left: 3px solid #29D;
+                padding-left: 7px;
+                margin: 16px;
+              }
+              `}</style>
             </section>
 
             {/* Conclusion */}
