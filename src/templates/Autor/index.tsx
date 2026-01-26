@@ -88,8 +88,8 @@ const AutorTemplate = ({ author }: AuthorTemplateProps) => {
                   {author.name}
                 </h1>
                 {/* <p className="text-primary font-medium mb-4">{author.role}</p> */}
-                <p className="text-muted-foreground leading-relaxed mb-6">
-                  {author.bio.html}
+                <p className="text-muted-foreground leading-relaxed mb-6"
+                    dangerouslySetInnerHTML={{ __html: author.bio.html }}>
                 </p>
 
                 {/* Social Links */}
