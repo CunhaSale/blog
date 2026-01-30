@@ -51,7 +51,7 @@ export const BlogPostCard = ({ title, description, coverImage, author, createdAt
           <div className="flex items-baseline">
             <span className="text-foreground text-sm">Por:&nbsp;&nbsp;</span>
             <span className="text-muted-foreground text-sm">{author?.name} </span>
-            <span className="text-muted-foreground text-sm"> &nbsp;|&nbsp; </span>
+            <span className="text-muted-foreground text-sm"> &nbsp;&nbsp;|&nbsp; </span>
           </div>
           <span className="text-muted-foreground text-sm">
             {(() => {
