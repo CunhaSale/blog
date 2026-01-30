@@ -80,7 +80,7 @@ const PostTemplate = ({ post }: PostTemplateProps) => {
             >
               {post.author.name}
             </Link>
-            <span className="text-muted-foreground">•</span>
+            <span className="text-muted-foreground">|</span>
             <span className="text-muted-foreground">
               {(() => {
                   const date = new Date(post.createdAt.replace(/(\.\d{3})\d+/, "$1"));
@@ -104,9 +104,9 @@ const PostTemplate = ({ post }: PostTemplateProps) => {
           {/* Content */}
           <div className="prose prose-lg max-w-none">
             {/* Intro */}
-            <p className="text-lg md:text-xl text-foreground leading-relaxed mb-8 font-medium">
+            <h2 className="text-lg md:text-xl text-foreground leading-relaxed mb-8 font-medium">
               {post.description}
-            </p>
+            </h2>
 
             <section className="mb-8">
               <div

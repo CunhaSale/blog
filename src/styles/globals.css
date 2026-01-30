@@ -98,6 +98,20 @@ All colors MUST be HSL.
   }
 }
 
+@layer base {
+  h1 {
+    @apply bg-clip-text text-transparent;
+  }
+
+  h2 {
+    @apply text-lg md:text-xl text-foreground leading-relaxed mb-8 font-medium;
+  }
+
+  h3 {
+    @apply text-lg md:text-xl text-foreground leading-relaxed mb-8 font-medium;
+  }
+}
+
 /* @layer base {
   * {
     @apply border-border;
