@@ -4,6 +4,7 @@ import { Post } from "../Post";
 import { Header } from "@/components/Header";
 import { ChevronRight } from "lucide-react";
 import { BlogPostCard } from "@/components/BlogPostCard";
+import { Footer } from "@/components/Footer";
 
 type subCategory = {
    name: string;
@@ -78,13 +79,7 @@ const SubCategoryTemplate = ({ subCategory, posts }: SubCategoryTemplateProps) =
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-border mt-16">
-        <div className="container mx-auto px-4 py-8">
-          <p className="text-center text-muted-foreground">
-            © 2024 BrandUp. Todos os direitos reservados.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
     // <>
     //   <HeaderTemplate />

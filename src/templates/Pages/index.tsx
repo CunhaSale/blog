@@ -1,3 +1,4 @@
+import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import Link from "next/link";
@@ -54,13 +55,7 @@ const PageTemplate = ({ title, body}: PageTemplateProps) => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-muted/30 border-t border-border mt-16">
-        <div className="container mx-auto px-4 py-8 text-center">
-          <p className="text-muted-foreground">
-            © 2024 Blog. Todos os direitos reservados.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

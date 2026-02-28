@@ -5,6 +5,7 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbP
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Linkedin, Mail, Twitter } from "lucide-react";
 import { BlogPostCard } from "@/components/BlogPostCard";
+import { Footer } from "@/components/Footer";
 
 
 export type AuthorTemplateProps = {
@@ -172,13 +173,7 @@ const AutorTemplate = ({ author }: AuthorTemplateProps) => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-muted/30 border-t border-border mt-16">
-        <div className="container mx-auto px-4 py-8 text-center">
-          <p className="text-muted-foreground">
-            © 2024 Blog. Todos os direitos reservados.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
     // <>
     //   <HeaderTemplate />

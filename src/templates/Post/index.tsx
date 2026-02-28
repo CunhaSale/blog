@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Header } from '@/components/Header';
 import { ArrowLeft } from 'lucide-react';
+import { Footer } from '@/components/Footer';
 
 export type Post = {
   id: string;
@@ -146,28 +147,7 @@ const PostTemplate = ({ post }: PostTemplateProps) => {
         </article>
       </main>
       {/* Footer */}
-      <footer className="border-t bg-card py-12">
-        <div className="container mx-auto px-4 md:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground">
-                © 2024 MindTech. Todos os direitos reservados.
-              </span>
-            </div>
-            <div className="flex gap-6">
-              <Link href="/sobre-nos" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Sobre Nós
-              </Link>
-              <Link href="/anuncios" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Jobs
-              </Link>
-              <Link href="/contato" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Contato
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }
