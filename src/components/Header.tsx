@@ -26,21 +26,21 @@ export const Header = () => {
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-8">
         <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
           <Code2 className="h-6 w-6 text-primary" />
-          <span className="text-xl font-bold text-foreground">MindTech</span>
+          <span className="text-xl font-bold text-foreground">MindTech Blog</span>
         </Link>
         
-        <nav className="flex items-center gap-6 md:flex hidden">
-          <Link 
+        <nav className="hidden md:flex items-center gap-6 ml-auto">
+          {/* <Link 
             href="/sobre-nos" 
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Sobre Nós
-          </Link>
+          </Link> */}
           <Link 
-            href={`https://brandup-lp.vercel.app/?theme=${theme}`}
+            href={`https://brandup-lp.vercel.app/`}
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Consultoria
+            Conheça nossos serviços
           </Link>
           <button
             onClick={toggleTheme}
@@ -80,18 +80,18 @@ export const Header = () => {
       {isMenuOpen && (
         <nav className="md:hidden sticky backdrop-blur-lg bg-background/80 border-b border-border px-4 py-4 animate-fade-in">
           <div className="flex items-center flex-col gap-4">
-            <Link 
+            {/* <Link 
               href="/sobre-nos" 
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Sobre Nós
-            </Link>
+            </Link> */}
             <Link 
-              href={`https://brandup-lp.vercel.app/?theme=${theme}`}
+              href={`https://brandup-lp.vercel.app/`}
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
-              Consultoria
+              Conheça nossos serviços
             </Link>
           </div>
         </nav>

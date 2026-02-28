@@ -38,7 +38,7 @@ const Header = () => (
                             fontWeight="bold"
                             fill="#ededed"
                             letterSpacing="1.5">
-                            MindTech
+                            MindTech Blog
                         </text>
 
                         <circle cx="40" cy="54" r="15" stroke="#29D" strokeWidth="2" fill="none"/>

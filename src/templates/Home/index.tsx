@@ -64,23 +64,10 @@ export default function HomeTemplate({ posts }: HomeTemplateProps) {
         </main>
         <footer className="backdrop-blur-lg bg-background/80 border-t border-border py-12">
           <div className="container mx-auto px-4 md:px-8">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-muted-foreground">
-                  © 2024 MindTech. Todos os direitos reservados.
-                </span>
-              </div>
-              <div className="flex gap-6">
-                <a href="/sobre-nos" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Sobre Nós
-                </a>
-                <a href="/anuncios" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Jobs
-                </a>
-                <a href="/contato" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Contato
-                </a>
-              </div>
+            <div className="flex justify-center items-center">
+              <span className="text-sm text-muted-foreground">
+                © 2026 MindTech. Todos os direitos reservados.
+              </span>
             </div>
           </div>
         </footer>
