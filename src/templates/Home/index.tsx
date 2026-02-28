@@ -4,6 +4,8 @@ import { Post } from "../Post";
 import { BlogPostCard } from "@/components/BlogPostCard";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { FeaturedPost } from "@/components/FeaturedPost";
+import { SecondaryPostsColumn } from "@/components/SecondaryPostsColumn";
 // import TextUnderlineRound from "@/components/text-underline-round";
 
 const geistSans = Geist({
@@ -22,7 +24,13 @@ export type HomeTemplateProps = {
 
 export default function HomeTemplate({ posts }: HomeTemplateProps) {
   const postsWithoutAds = posts.filter(post => !post.ad);
+  const sortedPosts = postsWithoutAds.sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
   // const lastPost = postsWithoutAds[postsWithoutAds.length - 1];
+  const [latestPost, ...remainingPosts] = sortedPosts;
+  const secondaryPosts = remainingPosts.slice(0, 3);   // 2º e 3º posts
+  const gridPosts = remainingPosts.slice(3);            // restante para o grid
 
   return (
     <>
@@ -40,17 +48,28 @@ export default function HomeTemplate({ posts }: HomeTemplateProps) {
           {/* <PostsList posts={posts} /> */}
           <section className="py-16 md:py-24">
             <div className="container mx-auto px-4 md:px-8">
-              <div className="text-center space-y-4 mb-12 md:mb-16">
+              {/* <div className="text-center space-y-4 mb-12 md:mb-16">
                 <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-foreground">
                   Explore Conteúdos Que Inspiram
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                   Descubra, Aprenda e Conecte-se com Conteúdos Feitos pra Você
                 </p>
-              </div>
+              </div> */}
+
+              {/* ── Seção de destaque ── */}
+              {latestPost && (
+                <section className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+                  {/* Lado esquerdo — post em destaque */}
+                  <FeaturedPost {...latestPost} />
+
+                  {/* Lado direito — 2º e 3º posts em coluna */}
+                  <SecondaryPostsColumn posts={secondaryPosts} />
+                </section>
+              )}
               
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {postsWithoutAds.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).map((post, index) => (
+              <div className="grid gap-8 mt-12 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {gridPosts.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).map((post, index) => (
                   <div 
                   key={post.slug} 
                   className="animate-fade-in"
