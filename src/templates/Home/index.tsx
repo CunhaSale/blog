@@ -46,7 +46,7 @@ export default function HomeTemplate({ posts }: HomeTemplateProps) {
           {/* <HeaderTemplate /> */}
           {/* <HighlightSection lastPost={lastPost} /> */}
           {/* <PostsList posts={posts} /> */}
-          <section className="py-16 md:py-24">
+          <section className="py-8 md:py-12">
             <div className="container mx-auto px-4 md:px-8">
               {/* <div className="text-center space-y-4 mb-12 md:mb-16">
                 <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-foreground">
