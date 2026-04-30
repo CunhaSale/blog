@@ -26,7 +26,13 @@ export const Header = () => {
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-8">
         <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
           <Code2 className="h-6 w-6 text-primary" />
-          <span className="text-xl font-bold text-foreground">MindTech Blog</span>
+          <span className="text-xl font-bold text-foreground">Mind<span style={{
+                background: "linear-gradient(90deg, #7c3aed, #6366f1, #3b82f6)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",}}>
+                  Solutions
+              </span> Blog</span>
         </Link>
         
         <nav className="hidden md:flex items-center gap-6 ml-auto">

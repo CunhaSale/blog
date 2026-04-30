@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider
           attribute="class" 
-          defaultTheme="system" 
+          defaultTheme="light" 
           enableSystem 
           storageKey="theme">
         <NextNProgress color="#29D" startPosition={0.3} stopDelayMs={200} height={3} showOnShallow={true} />

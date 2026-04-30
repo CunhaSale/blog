@@ -38,7 +38,7 @@ const Header = () => (
                             fontWeight="bold"
                             fill="#ededed"
                             letterSpacing="1.5">
-                            MindTech Blog
+                            MindSolutions Blog
                         </text>
 
                         <circle cx="40" cy="54" r="15" stroke="#29D" strokeWidth="2" fill="none"/>
@@ -48,7 +48,7 @@ const Header = () => (
                         <circle cx="55" cy="54" r="2.5" fill="#29D"/>
                     </svg>
 
-                    {/* <span className={styles.logoText}>MindTech</span> */}
+                    {/* <span className={styles.logoText}>MindSolutions</span> */}
                 </Link>
             </div>
         </div>
