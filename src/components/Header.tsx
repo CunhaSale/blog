@@ -1,5 +1,4 @@
-import { Code2, Menu, Moon, Sun, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Code2, ExternalLink, Menu, Moon, Sun, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
@@ -26,13 +25,14 @@ export const Header = () => {
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-8">
         <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
           <Code2 className="h-6 w-6 text-primary" />
-          <span className="text-xl font-bold text-foreground">Mind<span style={{
+          <span className="text-xl font-bold text-foreground">Blog<span style={{
                 background: "linear-gradient(90deg, #7c3aed, #6366f1, #3b82f6)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",}}>
-                  Solutions
-              </span> Blog</span>
+                  &nbsp;Solutions
+              </span>
+          </span>
         </Link>
         
         <nav className="hidden md:flex items-center gap-6 ml-auto">
@@ -44,9 +44,10 @@ export const Header = () => {
           </Link> */}
           <Link 
             href={`https://brandup-lp.vercel.app/`}
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            className="text-sm flex items-center gap-2 font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Conheça nossos serviços
+            MindSolutions.app
+            <ExternalLink className="h-3.5 w-3.5" />
           </Link>
           <button
             onClick={toggleTheme}
