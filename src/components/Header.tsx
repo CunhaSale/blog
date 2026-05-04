@@ -49,7 +49,7 @@ export const Header = () => {
             href={`https://brandup-lp.vercel.app/`}
             className="text-sm flex items-center gap-2 font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Portal
+            Solutions
             <ExternalLink className="h-3.5 w-3.5" />
           </Link>
           <button
@@ -101,7 +101,7 @@ export const Header = () => {
               href={`https://brandup-lp.vercel.app/`}
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
-              Portal
+              Solutions
             </Link>
           </div>
         </nav>
