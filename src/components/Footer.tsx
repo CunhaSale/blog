@@ -4,7 +4,7 @@ export const Footer = () => {
             <div className="container mx-auto px-4 md:px-8">
                 <div className="flex justify-center items-center">
                 <span className="text-sm text-muted-foreground">
-                    © 2026 MindSolutions - Todos os direitos reservados.
+                    © 2026 MindTechSolutions - Todos os direitos reservados.
                 </span>
                 </div>
             </div>
