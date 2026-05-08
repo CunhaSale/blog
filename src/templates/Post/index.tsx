@@ -73,7 +73,7 @@ const PostTemplate = ({ post }: PostTemplateProps) => {
           </div>
 
           {/* Author and Date */}
-          <div className="flex items-center gap-2 text-sm mb-8 pb-8 border-b border-border">
+          <div className="flex items-center gap-2 text-sm pb-8 border-b border-border">
             <span className="text-muted-foreground">Por:</span>
             <Link 
               href={`/autor/${post.author.slug}`}
