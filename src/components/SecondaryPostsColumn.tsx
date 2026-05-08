@@ -24,7 +24,7 @@ const SecondaryPostCard = ({
 }: Post) => {
   return (
     <Link href={`/post/${slug}`} className="group block">
-      <article className="flex gap-4 rounded-xl border border-border bg-card hover:bg-muted/50 transition-all duration-300 overflow-hidden shadow-sm hover:shadow-md p-4">
+      <article className="flex items-center gap-4 rounded-xl border border-border bg-card hover:bg-muted/50 transition-all duration-300 overflow-hidden shadow-sm hover:shadow-md p-4">
         {/* Thumbnail */}
         {coverImage && (
           <div className="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
@@ -39,7 +39,7 @@ const SecondaryPostCard = ({
 
         {!coverImage && (
           <div className="w-24 h-24 flex-shrink-0 rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-            <span className="text-2xl text-primary/40">✦</span>
+            <span className="text-2xl text-[#7C6FEC]">✦</span>
           </div>
         )}
 
@@ -47,7 +47,7 @@ const SecondaryPostCard = ({
         <div className="flex flex-col justify-between min-w-0 flex-1">
           <div>
             {subCategories[0].category && (
-              <span className="text-xs font-semibold uppercase tracking-widest text-primary/70 mb-1 block">
+              <span className="text-xs text-[#7C6FEC] font-semibold uppercase tracking-widest mb-1 block">
                 {subCategories[0].category.name}
               </span>
             )}

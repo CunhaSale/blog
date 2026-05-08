@@ -29,12 +29,19 @@ export const Header = () => {
               <path d="M 8 28 C 8 16 14 14 22 22 C 30 30 36 28 36 16" fill="none" stroke="#9B8FFF" strokeWidth="3.2" strokeLinecap="round"></path>
               <circle cx="36" cy="16" r="3.5" fill="#9B8FFF"></circle>
             </svg> */}
-            <div className="flex flex-col justify-center gap-0.5 font-sans">
+            {/* <div className="flex flex-col justify-center gap-0.5 font-sans">
               <div className="flex items-center" style={{lineHeight: 'normal'}}>
                 <span className="text-[22px] font-medium text-foreground" style={{ letterSpacing: '-0.3px' }}>Mind</span>
                 <span className="text-[22px] font-medium text-[#7C6FEC]" style={{ letterSpacing: '-0.3px' }}>Tech</span>
               </div>
               <span className="text-[11px] font-normal text-muted-foreground uppercase text-right" style={{ letterSpacing: '1.8px', lineHeight: '1' }}>Insights</span>
+            </div> */}
+            <div className="flex flex-col font-sans">
+              <div className="flex items-baseline leading-none">
+                <span className="text-[22px] font-bold text-foreground tracking-tight">Mind</span>
+                <span className="text-[22px] font-bold text-[#7C6FEC] tracking-tight">Tech</span>
+              </div>
+              <span className="text-[11px] font-bold text-muted-foreground tracking-[1.8px] uppercase text-right leading-none mt-1">Solutions</span>
             </div>
           </div>
         
@@ -54,7 +61,7 @@ export const Header = () => {
           </Link>
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-lg text-foreground hover:text-primary hover:bg-muted transition-colors"
+            className="p-2 rounded-lg text-foreground hover:text-[#7C6FEC] hover:bg-muted transition-colors"
             aria-label="Alternar tema">
               {theme === "dark" ? (
                 <Moon className="w-5 h-5" />
@@ -68,7 +75,7 @@ export const Header = () => {
         <div className="flex items-center gap-4">
           <button
             onClick={toggleTheme}
-            className="md:hidden p-2 rounded-lg text-foreground hover:text-primary hover:bg-muted transition-colors"
+            className="md:hidden p-2 rounded-lg text-foreground hover:text-[#7C6FEC] hover:bg-muted transition-colors"
             aria-label="Alternar tema">
               {theme === "dark" ? (
                 <Moon className="w-5 h-5" />

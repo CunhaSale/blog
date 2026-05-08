@@ -45,13 +45,13 @@ const PostTemplate = ({ post }: PostTemplateProps) => {
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link 
               href="/" 
-              className="text-primary hover:underline flex items-center gap-1"
+              className="text-[#7C6FEC] hover:underline flex items-center gap-1"
             >
               <ArrowLeft className="h-4 w-4" />
               Voltar
             </Link>
             <span className="text-muted-foreground">/</span>
-            <Link href={`/categoria/${post.subCategories[0].category.slug}`} className="text-primary hover:underline">
+            <Link href={`/categoria/${post.subCategories[0].category.slug}`} className="text-[#7C6FEC] hover:underline">
               {post.subCategories[0].category.name}
             </Link>
             <span className="text-muted-foreground">/</span>
@@ -77,7 +77,7 @@ const PostTemplate = ({ post }: PostTemplateProps) => {
             <span className="text-muted-foreground">Por:</span>
             <Link 
               href={`/autor/${post.author.slug}`}
-              className="text-primary hover:underline font-medium"
+              className="text-[#7C6FEC] hover:underline font-medium"
             >
               {post.author.name}
             </Link>
@@ -138,7 +138,7 @@ const PostTemplate = ({ post }: PostTemplateProps) => {
           <div className="mt-12 pt-8 border-t border-border">
             <Link 
               href="/"
-              className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
+              className="inline-flex items-center gap-2 text-[#7C6FEC] hover:underline font-medium"
             >
               <ArrowLeft className="h-4 w-4" />
               Voltar para todos os artigos

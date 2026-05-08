@@ -26,7 +26,7 @@ export const FeaturedPost = ({
 }: Post) => {
   return (
     <Link href={`/post/${slug}`} className="group block h-full">
-      <article className="relative h-full min-h-[420px] rounded-2xl overflow-hidden border border-border bg-card shadow-md hover:shadow-xl transition-all duration-500">
+      <article className="relative h-full min-h-[320px] rounded-2xl overflow-hidden border border-border bg-card shadow-md hover:shadow-xl transition-all duration-500 items-center">
         {/* Background image */}
         {coverImage ? (
           <div className="absolute inset-0">

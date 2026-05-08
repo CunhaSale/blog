@@ -46,7 +46,7 @@ export const BlogPostCard = ({ title, description, coverImage, author, createdAt
         </div>
         )}
       </div>
-      <CardContent className="p-6 space-y-2">
+      <CardContent className="p-4 space-y-2">
         <div className="flex items-center gap-1">
           <div className="flex items-baseline">
             <span className="text-foreground text-sm">Por:&nbsp;&nbsp;</span>
@@ -80,7 +80,7 @@ export const BlogPostCard = ({ title, description, coverImage, author, createdAt
             })()}
           </span>
         </div>
-        <h3 className="text-xl font-bold text-foreground line-clamp-2 group-hover:text-primary transition-colors py-1">
+        <h3 className="text-xl font-bold text-foreground line-clamp-2 group-hover:text-[#7C6FEC] transition-colors py-1">
           {title}
         </h3>
         <p className="text-muted-foreground line-clamp-3">
