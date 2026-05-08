@@ -41,7 +41,7 @@ export const Header = () => {
                 <span className="text-[22px] font-bold text-foreground tracking-tight">Mind</span>
                 <span className="text-[22px] font-bold text-[#7C6FEC] tracking-tight">Tech</span>
               </div>
-              <span className="text-[11px] font-bold text-muted-foreground tracking-[1.8px] uppercase text-right leading-none mt-1">Tech Solutions</span>
+              <span className="text-[11px] font-bold text-muted-foreground tracking-[1.8px] uppercase text-right leading-none mt-1">Solutions</span>
             </div>
           </div>
         
@@ -108,7 +108,7 @@ export const Header = () => {
               href={`https://brandup-lp.vercel.app/`}
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
-              Solutions
+              Tech Solutions
             </Link>
           </div>
         </nav>
