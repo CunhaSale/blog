@@ -1,4 +1,4 @@
-import { Code2, ExternalLink, Menu, Moon, Sun, X } from "lucide-react";
+import { Code2, ExternalLink, Facebook, Instagram, Linkedin, Mail, Menu, Moon, Sun, X, Youtube } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
@@ -24,26 +24,14 @@ export const Header = () => {
     <header className="sticky top-0 z-50 backdrop-blur-lg bg-background/80 border-b border-border supports-[backdrop-filter]:bg-card/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-8">
         <div className="flex items-center gap-4 cursor-pointer" onClick={() => window.location.href = '/'}>
-            {/* <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="22" cy="22" r="21" fill="#0F0F17"></circle>
-              <path d="M 8 28 C 8 16 14 14 22 22 C 30 30 36 28 36 16" fill="none" stroke="#9B8FFF" strokeWidth="3.2" strokeLinecap="round"></path>
-              <circle cx="36" cy="16" r="3.5" fill="#9B8FFF"></circle>
-            </svg> */}
-            {/* <div className="flex flex-col justify-center gap-0.5 font-sans">
-              <div className="flex items-center" style={{lineHeight: 'normal'}}>
-                <span className="text-[22px] font-medium text-foreground" style={{ letterSpacing: '-0.3px' }}>Mind</span>
-                <span className="text-[22px] font-medium text-[#7C6FEC]" style={{ letterSpacing: '-0.3px' }}>Tech</span>
-              </div>
-              <span className="text-[11px] font-normal text-muted-foreground uppercase text-right" style={{ letterSpacing: '1.8px', lineHeight: '1' }}>Insights</span>
-            </div> */}
-            <div className="flex flex-col font-sans">
-              <div className="flex items-baseline leading-none">
-                <span className="text-[22px] font-bold text-foreground tracking-tight">Mind</span>
-                <span className="text-[22px] font-bold text-[#7C6FEC] tracking-tight">Tech</span>
-              </div>
-              <span className="text-[11px] font-bold text-muted-foreground tracking-[1.8px] uppercase text-right leading-none mt-1">Insights</span>
+          <div className="flex flex-col font-sans">
+            <div className="flex items-baseline leading-none">
+              <span className="text-[22px] font-bold text-foreground tracking-tight">Mind</span>
+              <span className="text-[22px] font-bold text-[#7C6FEC] tracking-tight">Tech</span>
             </div>
+            <span className="text-[11px] font-bold text-muted-foreground tracking-[1.8px] uppercase text-right leading-none mt-1">Insights</span>
           </div>
+        </div>
         
         <nav className="hidden md:flex items-center gap-6 ml-auto">
           {/* <Link 
@@ -52,13 +40,58 @@ export const Header = () => {
           >
             Sobre Nós
           </Link> */}
-          <Link 
+
+          {/* <Link 
             href={`https://brandup-lp.vercel.app/`}
             className="text-sm flex items-center gap-2 font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            MindTech Solutions
+            MindTech Solutions */}
             {/* <ExternalLink className="h-3.5 w-3.5" /> */}
-          </Link>
+          {/* </Link> */}
+
+          <button
+            className="flex items-center gap-2 px-3 py-1 bg-background border border-gray-300 text-foreground hover:bg-muted transition-colors"
+          >
+            <Mail className="w-4 h-4" />
+            NEWSLETTER
+          </button>
+          <div className="flex items-center gap-2">
+            <a
+              href="#"
+              className="p-2 rounded-lg text-foreground hover:text-[#7C6FEC] hover:bg-muted transition-colors"
+              aria-label="Facebook"
+            >
+              <Facebook className="w-4 h-4" />
+            </a>
+            <a
+              href="#"
+              className="p-2 rounded-lg text-foreground hover:text-[#7C6FEC] hover:bg-muted transition-colors"
+              aria-label="Instagram"
+            >
+              <Instagram className="w-4 h-4" />
+            </a>
+            <a
+              href="#"
+              className="p-2 rounded-lg text-foreground hover:text-[#7C6FEC] hover:bg-muted transition-colors"
+              aria-label="X"
+            >
+              <X className="w-4 h-4" />
+            </a>
+            <a
+              href="#"
+              className="p-2 rounded-lg text-foreground hover:text-[#7C6FEC] hover:bg-muted transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="w-4 h-4" />
+            </a>
+            <a
+              href="#"
+              className="p-2 rounded-lg text-foreground hover:text-[#7C6FEC] hover:bg-muted transition-colors"
+              aria-label="YouTube"
+            >
+              <Youtube className="w-4 h-4" />
+            </a>
+          </div>
           <button
             onClick={toggleTheme}
             className="p-2 rounded-lg text-foreground hover:text-[#7C6FEC] hover:bg-muted transition-colors"
@@ -110,6 +143,49 @@ export const Header = () => {
             >
               MindTech Solutions
             </Link>
+            <button
+              className="flex items-center gap-2 px-3 py-2 bg-background border border-gray-300 rounded-lg text-foreground hover:bg-muted transition-colors"
+            >
+              <Mail className="w-4 h-4" />
+              NEWSLETTER
+            </button>
+            <div className="flex flex-wrap justify-center gap-2">
+              <a
+                href="#"
+                className="p-2 rounded-lg text-foreground hover:text-[#7C6FEC] hover:bg-muted transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a
+                href="#"
+                className="p-2 rounded-lg text-foreground hover:text-[#7C6FEC] hover:bg-muted transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a
+                href="#"
+                className="p-2 rounded-lg text-foreground hover:text-[#7C6FEC] hover:bg-muted transition-colors"
+                aria-label="X"
+              >
+                <X className="w-4 h-4" />
+              </a>
+              <a
+                href="#"
+                className="p-2 rounded-lg text-foreground hover:text-[#7C6FEC] hover:bg-muted transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a
+                href="#"
+                className="p-2 rounded-lg text-foreground hover:text-[#7C6FEC] hover:bg-muted transition-colors"
+                aria-label="YouTube"
+              >
+                <Youtube className="w-4 h-4" />
+              </a>
+            </div>
           </div>
         </nav>
       )}
