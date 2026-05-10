@@ -7,7 +7,7 @@ export const Footer = () => {
                 <div className="flex flex-col items-center gap-3 md:flex-row md:justify-between">
                     <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
                         <Link href="/contate-nos" className="text-muted-foreground hover:text-foreground hover:underline">
-                            Contate-nos
+                            Contato
                         </Link>
                         <Link href="/termos-de-uso" className="text-muted-foreground hover:text-foreground hover:underline">
                             Termos de uso

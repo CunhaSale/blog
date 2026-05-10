@@ -34,12 +34,25 @@ export const Header = () => {
         </div>
         
         <nav className="hidden md:flex items-center gap-6 ml-auto">
-          {/* <Link 
-            href="/sobre-nos" 
+          <Link 
+            href="/news" 
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Sobre Nós
-          </Link> */}
+            News
+          </Link>
+          <Link 
+            href="/trending" 
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Trending
+          </Link>
+          <Link 
+            href="/comunidade" 
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2"
+          >
+            Comunidade
+            {/* <span className="bg-[#7C6FEC] text-white text-xs px-1.5 py-0.5 rounded-full font-semibold">NEW</span> */}
+          </Link>
 
           {/* <Link 
             href={`https://brandup-lp.vercel.app/`}
@@ -130,13 +143,28 @@ export const Header = () => {
       {isMenuOpen && (
         <nav className="md:hidden sticky backdrop-blur-lg bg-background/80 border-b border-border px-4 py-4 animate-fade-in">
           <div className="flex items-center flex-col gap-4">
-            {/* <Link 
-              href="/sobre-nos" 
+            <Link 
+              href="/news" 
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              Sobre Nós
-            </Link> */}
+              News
+            </Link>
+            <Link 
+              href="/trending" 
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Trending
+            </Link>
+            <Link 
+              href="/comunidade" 
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2 flex items-center gap-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Comunidade
+              {/* <span className="bg-[#7C6FEC] text-white text-xs px-1.5 py-0.5 rounded-full font-semibold">NEW</span> */}
+            </Link>
             {/* <Link 
               href={`https://brandup-lp.vercel.app/`}
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
