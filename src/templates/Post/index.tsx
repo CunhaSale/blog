@@ -116,7 +116,7 @@ const PostTemplate = ({ post }: PostTemplateProps) => {
               />
               <style jsx global>{`
               .bodyhtml .highlight {
-                border-left: 3px solid #29D;
+                border-left: 3px solid #7C6FEC;
                 padding-left: 7px;
                 margin: 32px 16px;
               }

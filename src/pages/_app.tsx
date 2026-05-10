@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
           defaultTheme="light" 
           enableSystem 
           storageKey="theme">
-        <NextNProgress color="#29D" startPosition={0.3} stopDelayMs={200} height={3} showOnShallow={true} />
+        <NextNProgress color="#7C6FEC" startPosition={0.3} stopDelayMs={200} height={3} showOnShallow={true} />
         <Component {...pageProps} />
       </ThemeProvider>
     </QueryClientProvider>

@@ -24,7 +24,7 @@ const SecondaryPostCard = ({
 }: Post) => {
   return (
     <Link href={`/post/${slug}`} className="group block">
-      <article className="flex items-center gap-4 rounded-xl border border-border bg-card hover:bg-muted/50 transition-all duration-300 overflow-hidden shadow-sm hover:shadow-md p-4">
+      <article className="flex items-center gap-4 rounded-xl border border-border bg-card hover:bg-muted/50 transition-all duration-300 overflow-hidden shadow-sm hover:shadow-md p-2">
         {/* Thumbnail */}
         {coverImage && (
           <div className="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">

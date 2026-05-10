@@ -41,11 +41,11 @@ const Header = () => (
                             MindSolutions Blog
                         </text>
 
-                        <circle cx="40" cy="54" r="15" stroke="#29D" strokeWidth="2" fill="none"/>
-                        <circle cx="40" cy="39" r="2.5" fill="#29D"/>
-                        <circle cx="40" cy="69" r="2.5" fill="#29D"/>
-                        <circle cx="25" cy="54" r="2.5" fill="#29D"/>
-                        <circle cx="55" cy="54" r="2.5" fill="#29D"/>
+                        <circle cx="40" cy="54" r="15" stroke="#7C6FEC" strokeWidth="2" fill="none"/>
+                        <circle cx="40" cy="39" r="2.5" fill="#7C6FEC"/>
+                        <circle cx="40" cy="69" r="2.5" fill="#7C6FEC"/>
+                        <circle cx="25" cy="54" r="2.5" fill="#7C6FEC"/>
+                        <circle cx="55" cy="54" r="2.5" fill="#7C6FEC"/>
                     </svg>
 
                     {/* <span className={styles.logoText}>MindSolutions</span> */}
