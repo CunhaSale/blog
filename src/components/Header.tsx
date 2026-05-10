@@ -137,12 +137,12 @@ export const Header = () => {
             >
               Sobre Nós
             </Link> */}
-            <Link 
+            {/* <Link 
               href={`https://brandup-lp.vercel.app/`}
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               MindTech Solutions
-            </Link>
+            </Link> */}
             <button
               className="flex items-center gap-2 px-3 py-2 bg-background border border-gray-300 rounded-lg text-foreground hover:bg-muted transition-colors"
             >
