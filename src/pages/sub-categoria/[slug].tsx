@@ -16,7 +16,14 @@ export default function SubCategoryPage({ subCategory, posts }: SubCategoryTempl
 };
 
 export async function getStaticPaths() {
-    const { subCategories } = await client.request<GetSubCategoriesQuery>(GET_SUB_CATEGORIES, { first: 1 });
+    let subCategories = [] as GetSubCategoriesQuery["subCategories"];
+
+    try {
+        const response = await client.request<GetSubCategoriesQuery>(GET_SUB_CATEGORIES, { first: 1 });
+        subCategories = response.subCategories ?? [];
+    } catch (error) {
+        console.error("Error fetching subCategories for getStaticPaths:", error);
+    }
 
     const paths = subCategories.map((subCategory) => ({
         params: { slug: subCategory.slug },

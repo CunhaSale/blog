@@ -14,7 +14,14 @@ export default function Post({ post }: PostTemplateProps) {
 }
 
 export async function getStaticPaths() {
-    const { posts } = await client.request<GetPostsQuery>(GET_POSTS, { first: 1 });
+    let posts = [] as GetPostsQuery["posts"];
+
+    try {
+        const response = await client.request<GetPostsQuery>(GET_POSTS, { first: 1 });
+        posts = response.posts ?? [];
+    } catch (error) {
+        console.error("Error fetching posts for getStaticPaths:", error);
+    }
 
     const paths = posts.map(({ slug }) => ({
         params: { slug },

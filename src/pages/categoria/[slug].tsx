@@ -16,7 +16,14 @@ export default function CategoryPage({ category, subCategories, posts }: Categor
 }
 
 export async function getStaticPaths() {
-    const { categories } = await client.request<GetCategoriesQuery>(GET_CATEGORIES, { first: 1 });
+    let categories = [] as GetCategoriesQuery["categories"];
+
+    try {
+        const response = await client.request<GetCategoriesQuery>(GET_CATEGORIES, { first: 1 });
+        categories = response.categories ?? [];
+    } catch (error) {
+        console.error("Error fetching categories for getStaticPaths:", error);
+    }
 
     const paths = categories.map((category) => ({
         params: { slug: category.slug },
@@ -26,16 +33,19 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const { category } = await client.request<GetCategoryBySlugQuery>(GET_CATEGORY_BY_SLUG, {
-        slug: `${params?.slug}`
-    });
+    const slug = `${params?.slug}`;
 
-    const { posts } = await client.request<GetPostsByCategoryQuery>(GET_POSTS_BY_CATEGORY, {
-        category: `${params?.slug}`,
-    });
+    try {
+        const { category } = await client.request<GetCategoryBySlugQuery>(GET_CATEGORY_BY_SLUG, {
+            slug,
+        });
+
+        const { posts } = await client.request<GetPostsByCategoryQuery>(GET_POSTS_BY_CATEGORY, {
+            category: slug,
+        });
 
     const { subCategories } = await client.request<GetsubCategoriesByCategoryQuery>(GET_SUB_CATEGORIES_BY_CATEGORY, {
-        category: `${params?.slug}`,
+        category: slug,
     });
 
     if (!category) return { notFound: true };
@@ -50,4 +60,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             posts
         }
     };
-};
+} catch (error) {
+    console.error("Error fetching data for category page:", error);
+    return { notFound: true };
+}}

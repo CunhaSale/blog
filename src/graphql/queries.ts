@@ -27,8 +27,8 @@ export const GET_PAGE_BY_SLUG = gql`
 `;
 
 export const GET_AUTHORS = gql`
-  query getAuthors {
-    authors {
+  query getAuthors($first: Int) {
+    authors(first: $first) {
       name
       slug
       posts {
@@ -211,8 +211,8 @@ export const GET_POSTS_BY_AUTHOR = gql`
 `;
 
 export const GET_SUB_CATEGORIES = gql`
-  query getSubCategories {
-    subCategories {
+  query getSubCategories($first: Int) {
+    subCategories(first: $first) {
       name
       slug
       category {
@@ -237,8 +237,8 @@ export const GET_SUB_CATEGORY_BY_SLUG = gql`
 `;
 
 export const GET_CATEGORIES = gql`
-  query getCategories {
-    categories {
+  query getCategories($first: Int) {
+    categories(first: $first) {
       name
       slug
       subCategories {

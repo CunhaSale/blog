@@ -20,7 +20,14 @@ export default function AutorPage({ author }: AuthorTemplateProps) {
 }
 
 export async function getStaticPaths() {
-    const { authors } = await client.request<GetAuthorsQuery>(GET_AUTHORS, { first: 1 });
+    let authors = [] as GetAuthorsQuery["authors"];
+
+    try {
+        const response = await client.request<GetAuthorsQuery>(GET_AUTHORS, { first: 1 });
+        authors = response.authors ?? [];
+    } catch (error) {
+        console.error("Error fetching authors for getStaticPaths:", error);
+    }
 
     const paths = authors.map((author) => ({
         params: { slug: author.slug },
