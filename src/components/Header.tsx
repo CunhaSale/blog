@@ -62,12 +62,13 @@ export const Header = () => {
             {/* <ExternalLink className="h-3.5 w-3.5" /> */}
           {/* </Link> */}
 
-          <button
+          <Link
+            href="/newsletter"
             className="flex items-center gap-2 px-3 py-1 bg-background border border-gray-300 text-foreground hover:bg-muted transition-colors"
           >
             <Mail className="w-4 h-4" />
             NEWSLETTER
-          </button>
+          </Link>
           <div className="flex items-center gap-2">
             <a
               href="#"
@@ -171,12 +172,13 @@ export const Header = () => {
             >
               MindTech Solutions
             </Link> */}
-            <button
+            <Link
+              href="/Newsletter"
               className="flex items-center gap-2 px-3 py-2 bg-background border border-gray-300 rounded-lg text-foreground hover:bg-muted transition-colors"
             >
               <Mail className="w-4 h-4" />
               NEWSLETTER
-            </button>
+            </Link>
             <div className="flex flex-wrap justify-center gap-2">
               <a
                 href="#"
