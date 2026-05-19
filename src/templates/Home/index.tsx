@@ -6,7 +6,6 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FeaturedPost } from "@/components/FeaturedPost";
 import { SecondaryPostsColumn } from "@/components/SecondaryPostsColumn";
-// import TextUnderlineRound from "@/components/text-underline-round";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,15 +21,71 @@ export type HomeTemplateProps = {
   posts: Post[]
 }
 
+function AdBanner() {
+  return (
+    <div className="w-full my-6 lg:my-10">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#075985] via-[#0369a1] to-[#0e7490] p-4 sm:p-5 md:p-8 shadow-lg">
+
+        {/* Grid background */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="ad-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path
+                  d="M 20 0 L 0 0 0 20"
+                  fill="none"
+                  stroke="#ffffff"
+                  strokeWidth="1"
+                />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#ad-grid)" />
+          </svg>
+        </div>
+
+        {/* Label */}
+        <span className="absolute top-3 right-4 text-[10px] font-medium text-white/40 uppercase tracking-widest">
+          Anúncio
+        </span>
+
+        {/* Content */}
+        <div className="relative z-10 flex items-center justify-between gap-4">
+
+          {/* Left */}
+          <div className="min-w-0 flex-1">
+            <h2 className="text-white text-sm sm:text-base md:text-xl font-bold tracking-wide uppercase leading-tight m-0">
+              Potencialize sua Presença Tech
+            </h2>
+
+            <p className="text-cyan-100 text-[12px] sm:text-sm md:text-base mt-1 md:mt-2 mb-0 font-light leading-snug md:leading-relaxed">
+              Conecte-se com especialistas e tomadores de decisão.
+            </p>
+          </div>
+
+          {/* Right */}
+          <div className="shrink-0">
+            <a
+              href="/anuncie"
+              className="inline-flex items-center justify-center whitespace-nowrap bg-[#facc15] hover:bg-[#eab308] text-[#0f172a] font-bold text-[10px] sm:text-xs md:text-sm uppercase tracking-wider px-3 sm:px-4 md:px-6 py-2.5 md:py-3 rounded-xl transition-all duration-200 hover:-translate-y-0.5 shadow-md no-underline"
+            >
+              Anuncie
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function HomeTemplate({ posts }: HomeTemplateProps) {
   const postsWithoutAds = posts.filter(post => !post.ad);
   const sortedPosts = postsWithoutAds.sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
   );
-  // const lastPost = postsWithoutAds[postsWithoutAds.length - 1];
   const [latestPost, ...remainingPosts] = sortedPosts;
-  const secondaryPosts = remainingPosts.slice(0, 3);   // 2º e 3º posts
-  const gridPosts = remainingPosts.slice(3);            // restante para o grid
+  const secondaryPosts = remainingPosts.slice(0, 3);
+  const gridPosts = remainingPosts.slice(3);
 
   return (
     <>
@@ -43,47 +98,40 @@ export default function HomeTemplate({ posts }: HomeTemplateProps) {
       <div className={`min-h-screen bg-background ${geistSans.variable} ${geistMono.variable}`}>
         <Header />
         <main>
-          {/* <HeaderTemplate /> */}
-          {/* <HighlightSection lastPost={lastPost} /> */}
-          {/* <PostsList posts={posts} /> */}
           <section className="py-8 md:py-12">
             <div className="container mx-auto px-4 md:px-8">
-              {/* <div className="text-center space-y-4 mb-12 md:mb-16">
-                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-foreground">
-                  Explore Conteúdos Que Inspiram
-                </h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Descubra, Aprenda e Conecte-se com Conteúdos Feitos pra Você
-                </p>
-              </div> */}
 
               {/* ── Seção de destaque ── */}
               {latestPost && (
                 <section className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-                  {/* Lado esquerdo — post em destaque */}
                   <FeaturedPost {...latestPost} />
-
-                  {/* Lado direito — 2º e 3º posts em coluna */}
                   <SecondaryPostsColumn posts={secondaryPosts} />
                 </section>
               )}
-              
-              <div className="grid gap-8 mt-12 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {gridPosts.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).map((post, index) => (
-                  <div 
-                  key={post.slug} 
-                  className="animate-fade-in"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                  <BlogPostCard {...post} />
-                  </div>
-                ))}
+
+              {/* ── Banner de anúncio ── */}
+              <AdBanner />
+
+              {/* ── Grid de posts ── */}
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {gridPosts
+                  .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+                  .map((post, index) => (
+                    <div
+                      key={post.slug}
+                      className="animate-fade-in"
+                      style={{ animationDelay: `${index * 100}ms` }}
+                    >
+                      <BlogPostCard {...post} />
+                    </div>
+                  ))}
               </div>
+
             </div>
           </section>
         </main>
         <Footer />
       </div>
     </>
-  )
+  );
 }

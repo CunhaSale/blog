@@ -35,22 +35,22 @@ export const Header = () => {
         
         <nav className="hidden md:flex items-center gap-6 ml-auto">
           <Link 
-            href="/news" 
+            href="/" 
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             News
           </Link>
           <Link 
-            href="/trending" 
+            href="/" 
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Trending
           </Link>
           <Link 
-            href="/comunidade" 
+            href="/" 
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2"
           >
-            Comunidade
+            Sobre a MindTech
             {/* <span className="bg-[#7C6FEC] text-white text-xs px-1.5 py-0.5 rounded-full font-semibold">NEW</span> */}
           </Link>
 
@@ -145,25 +145,25 @@ export const Header = () => {
         <nav className="md:hidden sticky backdrop-blur-lg bg-background/80 border-b border-border px-4 py-4 animate-fade-in">
           <div className="flex items-center flex-col gap-4">
             <Link 
-              href="/news" 
+              href="/" 
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               News
             </Link>
             <Link 
-              href="/trending" 
+              href="/" 
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Trending
             </Link>
             <Link 
-              href="/comunidade" 
+              href="/" 
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2 flex items-center gap-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              Comunidade
+              Sobre a MindTech
               {/* <span className="bg-[#7C6FEC] text-white text-xs px-1.5 py-0.5 rounded-full font-semibold">NEW</span> */}
             </Link>
             {/* <Link 
