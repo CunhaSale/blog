@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
@@ -69,8 +70,14 @@ export default function Newsletter() {
       <Head>
         <title>Newsletter — MindTech Insights</title>
       </Head>
-
-      <main className="min-h-screen flex items-center justify-center bg-background">
+      <main className="relative min-h-screen flex items-center justify-center bg-background">
+        <Link
+            href="/"
+            className="absolute top-6 left-6 text-black/70 hover:underline flex items-center gap-1"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Voltar
+        </Link>
         <section className="w-full max-w-xl px-6 py-12">
           <div className="bg-card border border-border rounded-2xl shadow-sm p-10">
 
@@ -99,7 +106,7 @@ export default function Newsletter() {
             </p>
 
             {/* Benefits */}
-            <div className="flex flex-col gap-2.5 bg-muted rounded-lg px-5 py-4 mb-7">
+            {/* <div className="flex flex-col gap-2.5 bg-muted rounded-lg px-5 py-4 mb-7">
               {[
                 { icon: "🧠", text: "Artigos sobre IA, produto e engenharia" },
                 { icon: "📈", text: "Tendências e análises do mercado tech" },
@@ -110,7 +117,7 @@ export default function Newsletter() {
                   {item.text}
                 </p>
               ))}
-            </div>
+            </div> */}
 
             {/* Form */}
             <form onSubmit={handleSubmit} className="flex flex-col gap-3">

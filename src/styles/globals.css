@@ -110,7 +110,14 @@ All colors MUST be HSL.
   h3 {
     @apply text-lg md:text-xl text-foreground leading-relaxed font-medium;
   }
+  
+  /* body {
+    background-color: hsl(var(--background));
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.15) 1px, transparent 1.2px) !important;
+    background-size: 20px 20px !important;
+  } */
 }
+
 
 /* @layer base {
   * {

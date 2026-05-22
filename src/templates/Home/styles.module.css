@@ -5,6 +5,13 @@
   grid-row-start: 2;
 }
 
+/* globals.css */
+.dotted-bg {
+  background-color: rgb(249 250 251 / 0.7); /* gray-50/70 */
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
 @media (max-width: 600px) {
   .main {
     align-items: center;

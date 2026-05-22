@@ -26,7 +26,7 @@ export const Header = () => {
         <div className="flex items-center gap-4 cursor-pointer" onClick={() => window.location.href = '/'}>
           <div className="flex flex-col font-sans">
             <div className="flex items-baseline leading-none">
-              <span className="text-[22px] font-bold text-foreground tracking-tight">Mind</span>
+              <span className="text-[22px] font-bold text-foreground tracking-tight">VWG</span>
               <span className="text-[22px] font-bold text-[#7C6FEC] tracking-tight">Tech</span>
             </div>
             <span className="text-[11px] font-bold text-muted-foreground tracking-[1.8px] uppercase text-right leading-none mt-1">Insights</span>
@@ -34,7 +34,7 @@ export const Header = () => {
         </div>
         
         <nav className="hidden md:flex items-center gap-6 ml-auto">
-          <Link 
+          {/* <Link 
             href="/" 
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
@@ -51,8 +51,8 @@ export const Header = () => {
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2"
           >
             Sobre a MindTech
-            {/* <span className="bg-[#7C6FEC] text-white text-xs px-1.5 py-0.5 rounded-full font-semibold">NEW</span> */}
-          </Link>
+            <span className="bg-[#7C6FEC] text-white text-xs px-1.5 py-0.5 rounded-full font-semibold">NEW</span>
+          </Link> */}
 
           {/* <Link 
             href={`https://brandup-lp.vercel.app/`}
@@ -173,7 +173,7 @@ export const Header = () => {
               MindTech Solutions
             </Link> */}
             <Link
-              href="/Newsletter"
+              href="/newsletter"
               className="flex items-center gap-2 px-3 py-2 bg-background border border-gray-300 rounded-lg text-foreground hover:bg-muted transition-colors"
             >
               <Mail className="w-4 h-4" />
