@@ -100,10 +100,10 @@ export default function HomeTemplate({ posts }: HomeTemplateProps) {
       >
         <Header />
         <main>
-          <section className="py-8 md:py-12">
+          <section className="py-8 md:py-12 pt-6">
             <div className="container mx-auto px-4 md:px-8">
               {/* rounded-3xl border-slate-200/80 dark:border-slate-700/80 bg-gray/70 dark:bg-slate-900/80 shadow-sm backdrop-blur-sm max-w-3xl p-6 pl-0 */}
-              <div className="mb-8 mt-4">
+              <div className="mb-14">
                 <h1 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">
                   Bem-vindo à Blog Solutions
                 </h1>
