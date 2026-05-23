@@ -144,7 +144,7 @@ export const Header = () => {
       {isMenuOpen && (
         <nav className="md:hidden sticky backdrop-blur-lg bg-background/80 border-b border-border px-4 py-4 animate-fade-in">
           <div className="flex items-center flex-col gap-4">
-            <Link 
+            {/* <Link 
               href="/" 
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
               onClick={() => setIsMenuOpen(false)}
@@ -164,8 +164,8 @@ export const Header = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               Sobre a MindTech
-              {/* <span className="bg-[#7C6FEC] text-white text-xs px-1.5 py-0.5 rounded-full font-semibold">NEW</span> */}
-            </Link>
+              <span className="bg-[#7C6FEC] text-white text-xs px-1.5 py-0.5 rounded-full font-semibold">NEW</span>
+            </Link> */}
             {/* <Link 
               href={`https://brandup-lp.vercel.app/`}
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
