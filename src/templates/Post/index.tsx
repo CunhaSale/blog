@@ -138,7 +138,7 @@ const PostTemplate = ({ post }: PostTemplateProps) => {
           <div className="mt-12 pt-8 border-t border-border">
             <Link 
               href="/"
-              className="inline-flex items-center gap-2 text-[#7C6FEC] hover:underline font-medium"
+              className="inline-flex items-center gap-2 hover:underline font-medium"
             >
               <ArrowLeft className="h-4 w-4" />
               Voltar para todos os artigos

@@ -73,7 +73,7 @@ export default function Newsletter() {
       <main className="relative min-h-screen flex items-center justify-center bg-background">
         <Link
             href="/"
-            className="absolute top-6 left-6 text-black/70 hover:underline flex items-center gap-1"
+            className="absolute top-6 left-6 text-black/70 hover:underline flex items-center gap-1 dark:text-white/70"
           >
             <ArrowLeft className="h-4 w-4" />
             Voltar
