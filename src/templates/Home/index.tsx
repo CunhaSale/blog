@@ -105,7 +105,7 @@ export default function HomeTemplate({ posts }: HomeTemplateProps) {
               {/* rounded-3xl border-slate-200/80 dark:border-slate-700/80 bg-gray/70 dark:bg-slate-900/80 shadow-sm backdrop-blur-sm max-w-3xl p-6 pl-0 */}
               <div className="mb-8 md:mb-10">
                 <h1 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">
-                  Bem-vindo à Blog Solutions
+                  Bem-vindo à EvalueTech Insights
                 </h1>
                 <p className="mt-3 text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">
                   Aqui você encontra conteúdo estratégico para fortalecer sua presença digital, conectar-se com profissionais do setor e inspirar decisões com insights relevantes para empresas de tecnologia.

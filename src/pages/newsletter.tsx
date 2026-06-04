@@ -88,7 +88,7 @@ export default function Newsletter() {
             >
               <div className="flex flex-col font-sans items-center">
                 <div className="flex items-baseline leading-none">
-                  <span className="text-[26px] font-bold text-foreground tracking-tight">Mind</span>
+                  <span className="text-[26px] font-bold text-foreground tracking-tight">Evalue</span>
                   <span className="text-[26px] font-bold text-[#7C6FEC] tracking-tight">Tech</span>
                 </div>
                 <span className="text-[10px] font-bold text-muted-foreground tracking-[2px] uppercase leading-none mt-1">

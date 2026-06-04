@@ -18,7 +18,7 @@ export const Footer = () => {
                     </div>
                     <span className="text-sm text-muted-foreground text-center md:text-left">
                         © 2026 <Link href={`https://brandup-lp.vercel.app/`} className="text-[#7C6FEC] hover:underline">
-                            VWGTech Solutions
+                            EvalueTech Solutions
                         </Link> - Todos os direitos reservados.
                     </span>
                 </div>

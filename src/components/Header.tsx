@@ -26,7 +26,7 @@ export const Header = () => {
         <div className="flex items-center gap-4 cursor-pointer" onClick={() => window.location.href = '/'}>
           <div className="flex flex-col font-sans">
             <div className="flex items-baseline leading-none">
-              <span className="text-[22px] font-bold text-foreground tracking-tight">VWG</span>
+              <span className="text-[22px] font-bold text-foreground tracking-tight">Evalue</span>
               <span className="text-[22px] font-bold text-[#7C6FEC] tracking-tight">Tech</span>
             </div>
             <span className="text-[11px] font-bold text-muted-foreground tracking-[1.8px] uppercase text-right leading-none mt-1">Insights</span>
