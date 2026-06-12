@@ -1,11 +1,13 @@
 import Head from "next/head";
 import { Geist, Geist_Mono } from "next/font/google";
+import { useState, useMemo } from "react";
 import { Post } from "../Post";
 import { BlogPostCard } from "@/components/BlogPostCard";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FeaturedPost } from "@/components/FeaturedPost";
 import { SecondaryPostsColumn } from "@/components/SecondaryPostsColumn";
+// import { AdBanner } from "@/components/AdBanner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,75 +19,55 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export type Category = {
+  slug: string;
+  name: string;
+};
+
 export type HomeTemplateProps = {
-  posts: Post[]
-}
+  posts: Post[];
+  categories: Category[];
+  postsByCategory: Record<string, Post[]>;
+};
 
-function AdBanner() {
-  return (
-    <div className="w-full my-6 lg:my-10">
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#075985] via-[#0369a1] to-[#0e7490] p-4 sm:p-5 md:p-8 shadow-lg">
-
-        {/* Grid background */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="ad-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                <path
-                  d="M 20 0 L 0 0 0 20"
-                  fill="none"
-                  stroke="#ffffff"
-                  strokeWidth="1"
-                />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#ad-grid)" />
-          </svg>
-        </div>
-
-        {/* Label */}
-        <span className="absolute top-3 right-4 text-[10px] font-medium text-white/40 uppercase tracking-widest">
-          Anúncio
-        </span>
-
-        {/* Content */}
-        <div className="relative z-10 flex items-center justify-between gap-4">
-
-          {/* Left */}
-          <div className="min-w-0 flex-1">
-            <h2 className="text-white text-sm sm:text-base md:text-xl font-bold tracking-wide uppercase leading-tight m-0">
-              Potencialize sua Presença Tech
-            </h2>
-
-            <p className="text-cyan-100 text-[12px] sm:text-sm md:text-base mt-1 md:mt-2 mb-0 font-light leading-snug md:leading-relaxed">
-              Conecte-se com especialistas e tomadores de decisão.
-            </p>
-          </div>
-
-          {/* Right */}
-          <div className="shrink-0">
-            <a
-              href="/anuncie"
-              className="inline-flex items-center justify-center whitespace-nowrap bg-[#facc15] hover:bg-[#eab308] text-[#0f172a] font-bold text-[10px] sm:text-xs md:text-sm uppercase tracking-wider px-3 sm:px-4 md:px-6 py-2.5 md:py-3 rounded-xl transition-all duration-200 hover:-translate-y-0.5 shadow-md no-underline"
-            >
-              Anuncie
-            </a>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export default function HomeTemplate({ posts }: HomeTemplateProps) {
-  const postsWithoutAds = posts.filter(post => !post.ad);
-  const sortedPosts = postsWithoutAds.sort(
+function splitPosts(posts: Post[]) {
+  const sorted = [...posts].sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
   );
-  const [latestPost, ...remainingPosts] = sortedPosts;
-  const secondaryPosts = remainingPosts.slice(0, 3);
-  const gridPosts = remainingPosts.slice(3);
+  const [latestPost, ...remaining] = sorted;
+  return {
+    latestPost,
+    secondaryPosts: remaining.slice(0, 3),
+    gridPosts: remaining.slice(3),
+  };
+}
+
+export default function HomeTemplate({
+  posts,
+  categories,
+  postsByCategory,
+}: HomeTemplateProps) {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  // Posts da categoria selecionada (ou todos, sem ads)
+  const activePosts = useMemo(() => {
+    const base = selectedCategory
+      ? (postsByCategory[selectedCategory] ?? [])
+      : posts.filter((p) => !p.ad);
+
+    return base.filter((p) => !p.ad);
+  }, [selectedCategory, posts, postsByCategory]);
+
+  const { latestPost, secondaryPosts, gridPosts } = useMemo(
+    () => splitPosts(activePosts),
+    [activePosts]
+  );
+
+  // Últimas 4 categorias que possuem ao menos 1 post relacionado
+  const visibleCategories = [...categories]
+    .reverse()
+    .filter((cat) => (postsByCategory[cat.slug]?.length ?? 0) > 0)
+    .slice(0, 4);
 
   return (
     <>
@@ -95,58 +77,97 @@ export default function HomeTemplate({ posts }: HomeTemplateProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div
-        className={`min-h-screen ${geistSans.variable} ${geistMono.variable}`}
-      >
+      <div className={`min-h-screen ${geistSans.variable} ${geistMono.variable}`}>
         <Header />
         <main>
           <section className="py-8 md:py-12 pt-10 md:pt-16">
             <div className="container mx-auto px-4 md:px-8">
-              {/* rounded-3xl border-slate-200/80 dark:border-slate-700/80 bg-gray/70 dark:bg-slate-900/80 shadow-sm backdrop-blur-sm max-w-3xl p-6 pl-0 */}
               <div className="mb-8 md:mb-10">
                 <h1 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">
                   Bem-vindo à Evalue Insights
                 </h1>
                 <p className="mt-3 text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">
-                  Aqui você encontra conteúdo estratégico para fortalecer sua presença digital, conectar-se com profissionais do setor e inspirar decisões com insights relevantes para empresas de tecnologia.
+                  Aqui você encontra conteúdo estratégico para fortalecer sua
+                  presença digital, conectar-se com profissionais do setor e
+                  inspirar decisões com insights relevantes para empresas de
+                  tecnologia.
                 </p>
               </div>
 
               {/* ── Filtro por categoria ── */}
               <div className="flex flex-wrap gap-2 mb-8">
-                <button className="px-4 py-2 rounded-full border border-slate-300 dark:border-slate-600 bg-slate-900 dark:bg-slate-800 text-white text-sm font-medium hover:bg-slate-800 dark:hover:bg-slate-700 transition-colors">
+                {/* Botão "Todos" sempre primeiro */}
+                <button
+                  onClick={() => setSelectedCategory(null)}
+                  className={`px-4 py-2 rounded-full border text-sm font-medium transition-colors
+                    ${
+                      selectedCategory === null
+                        ? "border-slate-900 dark:border-slate-300 bg-slate-900 dark:bg-slate-800 text-white"
+                        : "border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700"
+                    }`}
+                >
                   Todos
                 </button>
-                <button className="px-4 py-2 rounded-full border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
-                  Tecnologia & Inovação
-                </button>
-                <button className="px-4 py-2 rounded-full border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
-                  Marketing
-                </button>
-                <button className="px-4 py-2 rounded-full border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
-                  Vendas
-                </button>
-                <button className="px-4 py-2 rounded-full border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
-                  Gestão de Projetos
-                </button>
+
+                {/* Últimas 4 categorias vindas do servidor */}
+                {visibleCategories.map((cat) => (
+                  <button
+                    key={cat.slug}
+                    onClick={() => setSelectedCategory(cat.slug)}
+                    className={`px-4 py-2 rounded-full border text-sm font-medium transition-colors
+                      ${
+                        selectedCategory === cat.slug
+                          ? "border-slate-900 dark:border-slate-300 bg-slate-900 dark:bg-slate-800 text-white"
+                          : "border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700"
+                      }`}
+                  >
+                    {cat.name}
+                  </button>
+                ))}
               </div>
 
-              {/* ── Seção de destaque ── */}
-              {latestPost && (
-                <section className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-6 items-stretch">
-                  <FeaturedPost {...latestPost} />
-                  <SecondaryPostsColumn posts={secondaryPosts} />
-                </section>
+              {/* ── Nenhum resultado ── */}
+              {activePosts.length === 0 && (
+                <p className="text-slate-500 dark:text-slate-400 text-sm py-12 text-center">
+                  Nenhum post encontrado para esta categoria.
+                </p>
               )}
 
-              {/* ── Banner de anúncio ── */}
-              {/* <AdBanner /> */}
+              {/* ── "Todos": destaque + secundários + grid ── */}
+              {selectedCategory === null && activePosts.length > 0 && (
+                <>
+                  {latestPost && (
+                    <section className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-6 items-stretch">
+                      <FeaturedPost {...latestPost} />
+                      {secondaryPosts.length > 0 && (
+                        <SecondaryPostsColumn posts={secondaryPosts} />
+                      )}
+                    </section>
+                  )}
 
-              {/* ── Grid de posts ── */}
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-8">
-                {gridPosts
-                  .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-                  .map((post, index) => (
+                  {/* ── Banner de anúncio ── */}
+                  {/* <AdBanner /> */}
+
+                  {gridPosts.length > 0 && (
+                    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-8">
+                      {gridPosts.map((post, index) => (
+                        <div
+                          key={post.slug}
+                          className="animate-fade-in"
+                          style={{ animationDelay: `${index * 100}ms` }}
+                        >
+                          <BlogPostCard {...post} />
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </>
+              )}
+
+              {/* ── Categoria específica: somente grid ── */}
+              {selectedCategory !== null && activePosts.length > 0 && (
+                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-8">
+                  {activePosts.map((post, index) => (
                     <div
                       key={post.slug}
                       className="animate-fade-in"
@@ -155,8 +176,8 @@ export default function HomeTemplate({ posts }: HomeTemplateProps) {
                       <BlogPostCard {...post} />
                     </div>
                   ))}
-              </div>
-
+                </div>
+              )}
             </div>
           </section>
         </main>
