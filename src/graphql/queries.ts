@@ -343,3 +343,12 @@ export const GET_POSTS_BY_CATEGORY = gql`
     }
   }
 `;
+
+export const GET_SITE_SETTINGS = gql`
+  query getSiteSettings {
+    siteSettings(first: 1) {
+      showAdBanner,
+      showFooter
+    }
+  }
+`;

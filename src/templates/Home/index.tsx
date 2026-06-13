@@ -7,7 +7,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FeaturedPost } from "@/components/FeaturedPost";
 import { SecondaryPostsColumn } from "@/components/SecondaryPostsColumn";
-// import { AdBanner } from "@/components/AdBanner";
+import { AdBanner } from "@/components/AdBanner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,6 +28,7 @@ export type HomeTemplateProps = {
   posts: Post[];
   categories: Category[];
   postsByCategory: Record<string, Post[]>;
+  showAdBanner: boolean;
 };
 
 function splitPosts(posts: Post[]) {
@@ -46,6 +47,7 @@ export default function HomeTemplate({
   posts,
   categories,
   postsByCategory,
+  showAdBanner
 }: HomeTemplateProps) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
@@ -146,7 +148,7 @@ export default function HomeTemplate({
                   )}
 
                   {/* ── Banner de anúncio ── */}
-                  {/* <AdBanner /> */}
+                  {showAdBanner && <AdBanner />}
 
                   {gridPosts.length > 0 && (
                     <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-8">

@@ -3,23 +3,27 @@ import {
   GetCategoriesQuery,
   GetPostsByCategoryQuery,
   GetPostsQuery,
+  GetSiteSettingsQuery,
 } from "@/graphql/generated/graphql";
-import { GET_CATEGORIES, GET_POSTS, GET_POSTS_BY_CATEGORY } from "@/graphql/queries";
+import { GET_CATEGORIES, GET_POSTS, GET_POSTS_BY_CATEGORY, GET_SITE_SETTINGS, } from "@/graphql/queries";
 import HomeTemplate, { HomeTemplateProps } from "@/templates/Home";
 
-export default function Home({ posts, categories, postsByCategory }: HomeTemplateProps) {
-  return <HomeTemplate posts={posts} categories={categories} postsByCategory={postsByCategory} />;
+export default function Home({ posts, categories, postsByCategory, showAdBanner }: HomeTemplateProps) {
+  return <HomeTemplate posts={posts} categories={categories} postsByCategory={postsByCategory} showAdBanner={showAdBanner} />;
 }
 
 export const getStaticProps = async () => {
-  // 1. Todos os posts (para a aba "Todos")
-  const { posts } = await client.request<GetPostsQuery>(GET_POSTS, { first: 25 });
-
+  const [
+    { posts },
+    { categories },
+    { siteSettings },
+  ] = await Promise.all([
+    client.request<GetPostsQuery>(GET_POSTS, { first: 25 }),
+    client.request<GetCategoriesQuery>(GET_CATEGORIES, { first: 100 }),
+    client.request<GetSiteSettingsQuery>(GET_SITE_SETTINGS),
+  ]);
+ 
   if (!posts) return { notFound: true };
-
-  // 2. Últimas 4 categorias
-  const { categories } = await client.request<GetCategoriesQuery>(GET_CATEGORIES, { first: 100 });
-
   if (!categories) return { notFound: true };
 
   // 3. Posts de cada categoria em paralelo
@@ -41,6 +45,7 @@ export const getStaticProps = async () => {
       posts,
       categories,
       postsByCategory,
+      showAdBanner: siteSettings[0]?.showAdBanner ?? false,
     },
   };
 };
