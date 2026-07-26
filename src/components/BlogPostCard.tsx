@@ -32,7 +32,7 @@ interface BlogPostCardProps {
 
 export const BlogPostCard = ({ title, description, coverImage, author, createdAt, slug, ad }: BlogPostCardProps) => {
   return (
-    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-hover border-border">
+    <Card style={{ height: 'stretch' }} className="group overflow-hidden transition-all duration-300 hover:shadow-hover border-border">
       <Link href={`/post/${slug}`} className="block">
       <div className="relative aspect-[4/3] overflow-hidden">
         <img
