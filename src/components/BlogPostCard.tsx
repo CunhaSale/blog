@@ -80,7 +80,7 @@ export const BlogPostCard = ({ title, description, coverImage, author, createdAt
             })()}
           </span>
         </div>
-        <h3 className="text-xl font-bold text-foreground line-clamp-2 group-hover:text-[#7C6FEC] transition-colors py-1">
+        <h3 className="text-xl font-bold text-foreground line-clamp-2 transition-colors py-1">
           {title}
         </h3>
         <p className="text-muted-foreground line-clamp-3">

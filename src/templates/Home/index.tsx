@@ -139,7 +139,7 @@ export default function HomeTemplate({
               {selectedCategory === null && activePosts.length > 0 && (
                 <>
                   {latestPost && (
-                    <section className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-6 items-stretch">
+                    <section className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-2 items-stretch">
                       <FeaturedPost {...latestPost} />
                       {secondaryPosts.length > 0 && (
                         <SecondaryPostsColumn posts={secondaryPosts} />
@@ -151,7 +151,7 @@ export default function HomeTemplate({
                   {showAdBanner && <AdBanner />}
 
                   {gridPosts.length > 0 && (
-                    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-8">
+                    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-4 md:mt-8">
                       {gridPosts.map((post, index) => (
                         <div
                           key={post.slug}
