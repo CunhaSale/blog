@@ -86,7 +86,7 @@ export default function HomeTemplate({
             <div className="container mx-auto px-4 md:px-8">
               <div className="mb-8 md:mb-10">
                 <h1 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">
-                  Bem-vindo à Evalue Insights
+                  Bem-vindo!
                 </h1>
                 <p className="mt-3 text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">
                   Aqui você encontra conteúdo estratégico para fortalecer sua
