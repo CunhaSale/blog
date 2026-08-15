@@ -51,7 +51,7 @@ const SecondaryPostCard = ({
                 {subCategories[0].category.name}
               </span>
             )}
-            <h3 className="text-sm font-bold text-foreground leading-snug line-clamp-2 transition-colors duration-200">
+            <h3 className="text-sm text-foreground leading-snug line-clamp-2 transition-colors duration-200">
               {title}
             </h3>
             {/* <p className="text-xs text-muted-foreground mt-1 line-clamp-2 leading-relaxed">
