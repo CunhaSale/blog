@@ -88,7 +88,7 @@ export default function HomeTemplate({
                 <h1 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">
                   Bem-vindo!
                 </h1>
-                <p className="text-md md:text-1xl leading-[1.7] text-muted-foreground max-w-[50%] mb-9 mt-2">
+                <p className="text-md md:text-1xl leading-[1.7] text-muted-foreground lg:max-w-[50%] mb-9 mt-2">
                   Aqui você encontra conteúdo estratégico para fortalecer sua
                   presença digital, conectar-se com profissionais do setor e
                   inspirar decisões com insights relevantes para empresas de
