@@ -75,12 +75,13 @@ const PostTemplate = ({ post }: PostTemplateProps) => {
           {/* Author and Date */}
           <div className="flex items-center gap-2 text-sm pb-8 border-b border-border">
             <span className="text-muted-foreground">Por:</span>
-            <Link 
+            {/* <Link 
               href={`/autor/${post.author.slug}`}
               className="text-[#7C6FEC] hover:underline font-medium"
             >
               {post.author.name}
-            </Link>
+            </Link> */}
+            <span className="text-muted-foreground">Equipe MachiTech</span>
             <span className="text-muted-foreground">|</span>
             <span className="text-muted-foreground">
               {(() => {
