@@ -1,7 +1,9 @@
-import Head from "next/head";
 import { useState } from "react";
+import Head from "next/head";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { generateNextSeo } from "next-seo/pages";
+import { buildCanonical } from "@/lib/seo";
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
@@ -67,9 +69,11 @@ export default function Newsletter() {
 
   return (
     <>
-      <Head>
-        <title>Newsletter — MindTech Insights</title>
-      </Head>
+      <Head>{generateNextSeo({
+        title: "Newsletter",
+        description: "Receba conteúdos exclusivos sobre tecnologia, IA e negócios diretamente na sua caixa de entrada.",
+        canonical: buildCanonical("/newsletter"),
+      })}</Head>
       <main className="relative min-h-screen flex items-center justify-center bg-background">
         <Link
             href="/"

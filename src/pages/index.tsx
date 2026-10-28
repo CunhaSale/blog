@@ -1,3 +1,4 @@
+import Head from "next/head";
 import client from "@/graphql/client";
 import {
   GetCategoriesQuery,
@@ -6,10 +7,32 @@ import {
   GetSiteSettingsQuery,
 } from "@/graphql/generated/graphql";
 import { GET_CATEGORIES, GET_POSTS, GET_POSTS_BY_CATEGORY, GET_SITE_SETTINGS, } from "@/graphql/queries";
+import { buildCanonical } from "@/lib/seo";
+import { generateNextSeo } from "next-seo/pages";
 import HomeTemplate, { HomeTemplateProps } from "@/templates/Home";
 
 export default function Home({ posts, categories, postsByCategory, showAdBanner }: HomeTemplateProps) {
-  return <HomeTemplate posts={posts} categories={categories} postsByCategory={postsByCategory} showAdBanner={showAdBanner} />;
+  return (
+    <>
+      <Head>{generateNextSeo({
+        title: "Início",
+        description: "Conteúdo premium sobre tecnologia, IA, marketing e negócios para marcas que querem crescer com estratégia.",
+        canonical: buildCanonical("/"),
+        openGraph: {
+          url: buildCanonical("/"),
+          title: "MachiTech Insights",
+          description: "Conteúdo premium sobre tecnologia, IA, marketing e negócios para marcas que querem crescer com estratégia.",
+          images: [
+            {
+              url: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
+              alt: "MachiTech Insights",
+            },
+          ],
+        },
+      })}</Head>
+      <HomeTemplate posts={posts} categories={categories} postsByCategory={postsByCategory} showAdBanner={showAdBanner} />
+    </>
+  );
 }
 
 export const getStaticProps = async () => {
@@ -19,20 +42,21 @@ export const getStaticProps = async () => {
         { categories },
         { siteSettings },
       ] = await Promise.all([
-        client.request<GetPostsQuery>(GET_POSTS, { first: 25 }),
-        client.request<GetCategoriesQuery>(GET_CATEGORIES, { first: 100 }),
+        client.request<GetPostsQuery>(GET_POSTS, { first: 10 }),
+        client.request<GetCategoriesQuery>(GET_CATEGORIES, { first: 10 }),
         client.request<GetSiteSettingsQuery>(GET_SITE_SETTINGS),
       ]);
     
     if (!posts) return { notFound: true };
     if (!categories) return { notFound: true };
 
-    // 3. Posts de cada categoria em paralelo
+    const limitedCategories = categories.slice(0, 5);
+
     const categoryPostsEntries = await Promise.all(
-      categories.map(async (cat) => {
+      limitedCategories.map(async (cat) => {
         const { posts: catPosts } = await client.request<GetPostsByCategoryQuery>(
           GET_POSTS_BY_CATEGORY,
-          { category: cat.slug }
+          { category: cat.slug, first: 3 }
         );
         return [cat.slug, catPosts ?? []] as const;
       })
@@ -41,10 +65,10 @@ export const getStaticProps = async () => {
     const postsByCategory = Object.fromEntries(categoryPostsEntries);
 
     return {
-      revalidate: 60,
+      revalidate: 60 * 60,
       props: {
         posts,
-        categories,
+        categories: limitedCategories,
         postsByCategory,
         showAdBanner: siteSettings[0]?.showAdBanner ?? false,
       },

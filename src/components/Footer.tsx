@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { siteUrl } from "@/lib/seo"
 
 export const Footer = () => {
     return (
@@ -17,9 +18,8 @@ export const Footer = () => {
                         </Link>
                     </div>
                     <span className="text-sm text-muted-foreground text-center md:text-left">
-                        © 2026 <Link href={`https://brandup-lp.vercel.app/`} className="text-[#7C6FEC] hover:underline">
-                            MachiTech Solutions
-                        </Link> - Todos os direitos reservados.
+                        © 2026  MachiTech Insights - Todos os direitos reservados.
+                        {/* <Link href={siteUrl} className="text-[#7C6FEC] hover:underline"></Link> */}
                     </span>
                 </div>
             </div>
