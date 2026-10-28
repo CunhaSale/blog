@@ -50,10 +50,8 @@ export const getStaticProps = async () => {
     if (!posts) return { notFound: true };
     if (!categories) return { notFound: true };
 
-    const limitedCategories = categories.slice(0, 5);
-
     const categoryPostsEntries = await Promise.all(
-      limitedCategories.map(async (cat) => {
+      categories.map(async (cat) => {
         const { posts: catPosts } = await client.request<GetPostsByCategoryQuery>(
           GET_POSTS_BY_CATEGORY,
           { category: cat.slug, first: 3 }
@@ -68,7 +66,7 @@ export const getStaticProps = async () => {
       revalidate: 60 * 60,
       props: {
         posts,
-        categories: limitedCategories,
+        categories,
         postsByCategory,
         showAdBanner: siteSettings[0]?.showAdBanner ?? false,
       },

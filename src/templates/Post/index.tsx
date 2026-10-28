@@ -36,6 +36,9 @@ export type PostTemplateProps = {
 }
 
 const PostTemplate = ({ post }: PostTemplateProps) => {
+  const firstSubCategory = post.subCategories?.[0];
+  const category = firstSubCategory?.category;
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -50,12 +53,20 @@ const PostTemplate = ({ post }: PostTemplateProps) => {
               <ArrowLeft className="h-4 w-4" />
               Voltar
             </Link>
-            <span className="text-muted-foreground">/</span>
-            <Link href={`/categoria/${post.subCategories[0]?.category?.slug}`} className="text-[#7C6FEC] hover:underline">
-              {post.subCategories[0]?.category?.name}
-            </Link>
-            <span className="text-muted-foreground">/</span>
-            <span className="text-muted-foreground">{post.subCategories[0]?.name}</span>
+            {category?.slug ? (
+              <>
+                <span className="text-muted-foreground">/</span>
+                <Link href={`/categoria/${category.slug}`} className="text-[#7C6FEC] hover:underline">
+                  {category.name || 'Categoria'}
+                </Link>
+              </>
+            ) : null}
+            {firstSubCategory?.slug ? (
+              <>
+                <span className="text-muted-foreground">/</span>
+                <span className="text-muted-foreground">{firstSubCategory.name || 'Subcategoria'}</span>
+              </>
+            ) : null}
           </nav>
 
           {/* Title */}
