@@ -51,11 +51,11 @@ const PostTemplate = ({ post }: PostTemplateProps) => {
               Voltar
             </Link>
             <span className="text-muted-foreground">/</span>
-            <Link href={`/categoria/${post.subCategories[0].category.slug}`} className="text-[#7C6FEC] hover:underline">
-              {post.subCategories[0].category.name}
+            <Link href={`/categoria/${post.subCategories[0]?.category?.slug}`} className="text-[#7C6FEC] hover:underline">
+              {post.subCategories[0]?.category?.name}
             </Link>
             <span className="text-muted-foreground">/</span>
-            <span className="text-muted-foreground">{post.subCategories[0].name}</span>
+            <span className="text-muted-foreground">{post.subCategories[0]?.name}</span>
           </nav>
 
           {/* Title */}
